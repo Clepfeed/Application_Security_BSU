@@ -96,5 +96,5 @@ const httpsOptions = {
 const httpsServer = https.createServer(httpsOptions, app);
 
 httpsServer.listen(PORT, () => {
-    console.log(`Сервер запущен на https://localhost:${PORT}`);
+    console.log(`Сервер запущен на https://localhost:${PORT}\nСертификат VALID`);
 });

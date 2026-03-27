@@ -39,7 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('[DEV] TLS Changed');
         } catch (error) {
             console.error('[DEV] Error:', error);
-            alert('Server Error TLS change');
+
+            if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+                alert("Browser closed the connection");
+            } else {
+                alert('Server Error TLS change');
+            }
+
 
             sslToggle.checked = !isValid; 
             sslStatus.textContent = !isValid ? 'Валидный' : 'Невалидный';
