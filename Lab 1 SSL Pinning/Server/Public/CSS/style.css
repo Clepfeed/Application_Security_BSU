@@ -1,0 +1,362 @@
+/* Базовые настройки и шрифты */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Приятный, глубокий и успокаивающий темно-зеленый фон (как хвойный лес ночью) */
+body {
+    background-color: #0b1711; 
+    color: #c9e4d1; /* Мягкий светло-зеленый цвет текста (не режет глаза как чистый белый) */
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+/* Контейнер выглядит как темный лист бумаги/заявление */
+.container {
+    background: #15291e;
+    width: 100%;
+    max-width: 580px;
+    padding: 40px;
+    border-radius: 4px; /* Меньшее скругление для строгой "документальной" формы */
+    border-top: 6px solid #285e3f; /* Декоративная линия сверху */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+/* Шапка документа */
+.document-header {
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: 2px solid #1e3b2b;
+    padding-bottom: 20px;
+}
+
+h1 {
+    color: #e2f5e6;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #7b9e86;
+    font-size: 14px;
+}
+
+/* Группировка даты и названия в одну строку */
+.form-row {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Задаем пропорции: название команды занимает больше места, чем дата */
+.date-group {
+    flex: 1;
+}
+.name-group {
+    flex: 2;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #8dae98;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Стилизация инпутов под "заполнение линий в бланке" */
+input[type="text"], 
+input[type="date"] {
+    width: 100%;
+    padding: 10px 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #285e3f;
+    border-radius: 0;
+    color: #e2f5e6;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Для инпута даты (чтобы иконка календаря была светлой) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8) sepia(1) hue-rotate(80deg) saturate(2);
+    cursor: pointer;
+}
+
+input::placeholder {
+    color: #42634e;
+    font-style: italic;
+}
+
+input[type="text"]:focus, 
+input[type="date"]:focus {
+    outline: none;
+    border-bottom-color: #55a873; /* Подсветка линии при вводе */
+    background-color: rgba(40, 94, 63, 0.1); /* Легкое свечение фона */
+}
+
+/* Секция с игроками */
+.players-section {
+    background-color: #112219;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: 1px solid #1e3b2b;
+}
+
+.players-section h3 {
+    font-size: 15px;
+    color: #8dae98;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.player-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.player-number {
+    width: 30px;
+    font-weight: bold;
+    color: #55a873;
+    font-size: 16px;
+}
+
+/* Кнопки */
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Кнопка "Добавить игрока" (стиль пунктирной обводки, чтобы не отвлекать) */
+.btn-secondary {
+    background-color: transparent;
+    color: #55a873;
+    border: 1px dashed #285e3f;
+    margin-top: 15px;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(85, 168, 115, 0.1);
+    border-color: #55a873;
+}
+
+/* Главная кнопка отправки заявления */
+.btn-primary {
+    background-color: #285e3f;
+    color: #e2f5e6;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #357a52;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* --- АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ --- */
+@media (max-width: 500px) {
+    .container {
+        padding: 25px 20px;
+    }
+
+    /* На маленьких экранах выстраиваем дату и название в колонку */
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .btn {
+        padding: 12px;
+    }
+}
+
+/* Убедись, что у .container есть position: relative */
+.container {
+    background: #15291e;
+    width: 100%;
+    max-width: 580px;
+    padding: 40px;
+    border-radius: 4px;
+    border-top: 6px solid #285e3f;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    position: relative; /* <-- Важно для позиционирования меню */
+}
+
+/* ... Твой остальной CSS (body, h1, инпуты, кнопки) остается без изменений ... */
+
+/* --- ВЫПАДАЮЩЕЕ МЕНЮ И ГАМБУРГЕР (SSL PINNING) --- */
+.settings-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+/* Кнопка гамбургера */
+.hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 18px;
+    width: 24px;
+    padding: 0;
+    transition: transform 0.3s;
+}
+
+.hamburger-btn span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #55a873;
+    border-radius: 2px;
+    transition: background-color 0.3s;
+}
+
+.hamburger-btn:hover span {
+    background-color: #e2f5e6; /* При наведении полоски светлеют */
+}
+
+/* Само выпадающее меню */
+.settings-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 15px;
+    background-color: #0b1711;
+    border: 1px solid #1e3b2b;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    width: 240px;
+    
+    /* Скрыто по умолчанию с анимацией */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+/* Класс для показа меню (добавляется через JS) */
+.settings-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-header {
+    padding: 12px 15px;
+    border-bottom: 1px solid #1e3b2b;
+    font-size: 11px;
+    color: #55a873;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.dev-panel {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dev-label {
+    font-size: 13px;
+    color: #8dae98;
+}
+
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Тумблер переключателя */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #8c4a4a; /* Невалидный - красный */
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #e2f5e6;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #285e3f; /* Валидный - зеленый */
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+#sslStatus {
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+}
+
+.status-valid { color: #55a873; }
+.status-invalid { color: #cc6666; }

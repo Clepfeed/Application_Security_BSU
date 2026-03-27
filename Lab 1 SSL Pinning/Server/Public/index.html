@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявка на матч</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <script src="./JS/main_page.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Меню настроек (Гамбургер) -->
+        <div class="settings-container">
+            <button id="settingsBtn" class="hamburger-btn" aria-label="Настройки">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Выпадающее окно -->
+            <div id="settingsDropdown" class="settings-dropdown">
+                <div class="dropdown-header">Настройки разработчика</div>
+                <div class="dev-panel">
+                    <span class="dev-label">SSL Сертификат:</span>
+                    <div class="toggle-wrapper">
+                        <label class="switch">
+                            <input type="checkbox" id="sslToggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <span id="sslStatus" class="status-valid">Валидный</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="document-header">
+            <h1>Заявка на матч</h1>
+            <p class="subtitle">Форма регистрации данных о команде и составе</p>
+        </div>
+
+        <form id="matchForm">
+            <!-- Строка с датой и названием -->
+            <div class="form-row">
+                <div class="form-group date-group">
+                    <label for="matchDate">Дата проведения</label>
+                    <input type="date" id="matchDate" required>
+                </div>
+
+                <div class="form-group name-group">
+                    <label for="teamName">Название команды</label>
+                    <input type="text" id="teamName" placeholder="Например: Golden State Warriors" required>
+                </div>
+            </div>
+            
+            <div class="players-section">
+                <h3>Список заявленных игроков</h3>
+                <div id="playersList">
+                    <div class="player-row">
+                        <span class="player-number">1.</span>
+                        <input type="text" class="player-input" placeholder="Имя и Фамилия игрока" required>
+                    </div>
+                </div>
+                <button type="button" id="addPlayerBtn" class="btn btn-secondary">+ Добавить игрока</button>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Подать заявление</button>
+        </form>
+    </div>
+</body>
+</html>
